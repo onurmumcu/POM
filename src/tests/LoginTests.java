@@ -32,10 +32,10 @@ public class LoginTests {
 		
 	}
 	
-//	@AfterClass
-//	public void tearDown() {
-//		driver.quit();
-//	}
+	@AfterClass
+	public void tearDown() {
+		driver.quit();
+	}
 
 	@Test
 	public void positiveLoginTest() {
