@@ -14,7 +14,7 @@ public class HomePage {
 		
 	}
 	
-	@FindBy(linkText="Sing in")
+	@FindBy(linkText="Sign in")
 	public WebElement signInLink;
 	
 	@FindBy(xpath="//img[@class='logo img-responsive']")
@@ -28,6 +28,7 @@ public class HomePage {
 	public void gotoLoginPage() {
 		signInLink.click();
 	}
+	
 	
 
 }

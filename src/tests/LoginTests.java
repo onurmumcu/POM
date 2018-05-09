@@ -6,12 +6,16 @@ import static org.testng.Assert.assertTrue;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import static org.testng.Assert.*;
+
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+
 import pages.HomePage;
+import pages.LoginPage;
 import utilities.Configuration;
 
 public class LoginTests {
@@ -20,10 +24,10 @@ public class LoginTests {
 	
 	@BeforeClass
 	public void setUp() {
-		System.setProperty("webdriver.chrome.driver",
-				Configuration.getProperty("windriverpath"));
-		driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
+		System.setProperty("webdriver.gecko.driver",
+				Configuration.getProperty("winfirefoxdriverpath"));
+		driver = new FirefoxDriver();
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		driver.get(Configuration.getProperty("url"));
 		
 	}
@@ -43,7 +47,18 @@ public class LoginTests {
 		//verify logo is displayed
 		assertTrue(homePage.logo.isDisplayed());
 		
+		
 		homePage.gotoLoginPage();
+		
+		
+		LoginPage loginPage = new LoginPage(driver);
+		assertTrue(loginPage.isAt());
+		
+		assertTrue(loginPage.createAccountLabel.isDisplayed());
+		assertTrue(loginPage.alreadyRegisteredLabel.isDisplayed());
+		
+		loginPage.login(Configuration.getProperty("email"), Configuration.getProperty("password"));
+		
 		
 	}
 }
