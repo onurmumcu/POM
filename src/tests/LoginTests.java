@@ -6,6 +6,8 @@ import static org.testng.Assert.assertTrue;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
 import static org.testng.Assert.*;
 
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -13,7 +15,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-
+import pages.AccountPage;
 import pages.HomePage;
 import pages.LoginPage;
 import utilities.Configuration;
@@ -24,18 +26,17 @@ public class LoginTests {
 	
 	@BeforeClass
 	public void setUp() {
-		System.setProperty("webdriver.gecko.driver",
-				Configuration.getProperty("winfirefoxdriverpath"));
-		driver = new FirefoxDriver();
+		System.setProperty("webdriver.chrome.driver", "/Users/Selenium/Documents/selenium dependencies/drivers/chromedriver");
+		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		driver.get(Configuration.getProperty("url"));
 		
 	}
 	
-	@AfterClass
-	public void tearDown() {
-		driver.quit();
-	}
+//	@AfterClass
+//	public void tearDown() {
+//		driver.quit();
+//	}
 
 	@Test
 	public void positiveLoginTest() {
@@ -57,7 +58,20 @@ public class LoginTests {
 		assertTrue(loginPage.createAccountLabel.isDisplayed());
 		assertTrue(loginPage.alreadyRegisteredLabel.isDisplayed());
 		
-		loginPage.login(Configuration.getProperty("email"), Configuration.getProperty("password"));
+		loginPage.login(Configuration.getProperty("email"), 
+				        Configuration.getProperty("password"));
+		
+		
+		AccountPage accountPage = new AccountPage(driver);
+		assertTrue(accountPage.isAt(), "Account page is not loaded/displayed");
+		
+		assertTrue(accountPage.verifyUserOptions(
+				"ORDER HISTORY AND DETAILS",
+				"MY CREDIT SLIPS", 
+				"MY ADDRESSES", 
+				"MY PERSONAL INFORMATION", 
+				"MY WISHLISTS"));
+		
 		
 		
 	}
