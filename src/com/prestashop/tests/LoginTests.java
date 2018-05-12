@@ -1,4 +1,4 @@
-package tests;
+package com.prestashop.tests;
 
 
 import static org.testng.Assert.assertTrue;
@@ -15,10 +15,10 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import pages.AccountPage;
-import pages.HomePage;
-import pages.LoginPage;
-import utilities.Configuration;
+import com.prestashop.pages.AccountPage;
+import com.prestashop.pages.HomePage;
+import com.prestashop.pages.LoginPage;
+import com.prestashop.utilities.Configuration;
 
 public class LoginTests {
 	
