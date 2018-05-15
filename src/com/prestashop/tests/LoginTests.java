@@ -26,7 +26,7 @@ public class LoginTests {
 	
 	@BeforeClass
 	public void setUp() {
-		System.setProperty("webdriver.chrome.driver", "/Users/Selenium/Documents/selenium dependencies/drivers/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Selenium\\Documents\\selenium dependencies\\drivers\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		driver.get(Configuration.getProperty("url"));

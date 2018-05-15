@@ -10,7 +10,7 @@ public class Configuration {
 	static {
 		try {
 			properties = new Properties();
-			FileInputStream inputStream = new FileInputStream("/Users/Selenium/git/POM/configuration.properties");
+			FileInputStream inputStream = new FileInputStream("C:\\Users\\Selenium\\eclipse-workspace\\POM\\configuration.properties");
 				properties.load(inputStream);	
 		}catch (IOException e) {
 			e.printStackTrace();
